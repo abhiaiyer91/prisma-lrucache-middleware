@@ -42,10 +42,15 @@ export function createLRUCacheMiddleware({
   ) {
     let result;
 
-    if (params.model === model) {
+    if (
+      params.model === model &&
+      ["findOne", "queryRaw", `aggregate`, `findOne`, `findMany`].includes(
+        params.action
+      )
+    ) {
       const args = JSON.stringify(params.args);
 
-      const cacheKey = `${params.model}_${args}`;
+      const cacheKey = `${params.model}_${params.action}_${args}`;
 
       // Do we have a value in this cache key?
       result = cache.get(cacheKey);
