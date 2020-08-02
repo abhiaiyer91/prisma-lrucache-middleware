@@ -18,7 +18,7 @@ describe(`middleware`, () => {
     let val = await middleware(
       {
         args: { where: { foo: "bar" } },
-        action: "create",
+        action: "findOne",
         model: "User",
         dataPath: [],
         runInTransaction: false,
@@ -28,7 +28,9 @@ describe(`middleware`, () => {
 
     expect(next).toHaveBeenCalled();
 
-    const cacheKey = `User_${JSON.stringify({ where: { foo: "bar" } })}`;
+    const cacheKey = `User_findOne_${JSON.stringify({
+      where: { foo: "bar" },
+    })}`;
 
     expect(UserCache.get(cacheKey)).toBe(`result`);
 
@@ -41,7 +43,7 @@ describe(`middleware`, () => {
     val = await middleware(
       {
         args: { where: { foo: "bar" } },
-        action: "create",
+        action: "findOne",
         model: "User",
         dataPath: [],
         runInTransaction: false,
