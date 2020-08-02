@@ -47,6 +47,12 @@ const UserCache = new LRU(50);
 
 db.use(createLRUCacheMiddleware({ model: `User`, cache: UserCache }));
 
+// The first time
+let user = await db.user.findOne({ where: { id: "1111" } });
+
+// From cache
+user = await db.user.findOne({ where: { id: "1111" } });
+
 const PostCache = new LRU({
   max: 500,
   maxAge: 1000 * 60 * 60,
