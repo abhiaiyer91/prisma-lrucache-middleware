@@ -4,6 +4,13 @@
 
 Pass an [LRU Cache](https://github.com/isaacs/node-lru-cache) to cache Prisma query results.
 
+Only caches these actions
+
+- `findOne`
+- `findMany`
+- `queryRaw`
+- `aggregate`
+
 ## Required Reading
 
 Middlewares are an experimental feature. Read more about them [here](https://github.com/prisma/prisma/releases/tag/2.3.0)
