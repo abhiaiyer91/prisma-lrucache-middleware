@@ -11,27 +11,12 @@ Only caches these actions
 - `queryRaw`
 - `aggregate`
 
-## Required Reading
-
-Middlewares are an experimental feature. Read more about them [here](https://github.com/prisma/prisma/releases/tag/2.3.0)
-
 ## Quick Start
 
 Install the package using `yarn`:
 
 ```bash
 yarn add prisma-lrucache-middleware
-```
-
-### Feature flag
-
-Middlewares need to be enabled with the feature flag middlewares like so:
-
-```
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["middlewares"]
-}
 ```
 
 ## Code
